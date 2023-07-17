@@ -4,5 +4,6 @@ using namespace std;
 
 int main()
 {
-    cout << "Hello" << endl;
+    int x = min(INT_MAX + 1,10);
+    cout << x << endl;
 }

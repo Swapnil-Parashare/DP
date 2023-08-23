@@ -77,7 +77,7 @@ class Solution
 
 int main()
 {
-    string str = "ababbbabbababa";
+    string str = "aaaabba";
 
     Solution S;
 

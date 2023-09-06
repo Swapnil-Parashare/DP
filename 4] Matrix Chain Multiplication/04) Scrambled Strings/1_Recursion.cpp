@@ -14,7 +14,7 @@ class Solution{
 
         if(n == 1)
         {
-            return a == b;                                          // Its going to hit for sure !!!
+            return a == b;                                         // Its going to hit for sure !!!
         }
 
         if( a == b)                                                // Just to avoid unneccessary computation.                

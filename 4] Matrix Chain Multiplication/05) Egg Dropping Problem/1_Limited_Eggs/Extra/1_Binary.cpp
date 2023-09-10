@@ -18,7 +18,7 @@ class Solution
         }
 
         int temp_ans;
-        int check = f/2;  
+        int check = (f+1)/2;  
 
         temp_ans = 1 + max(                                            // Maximum is taken, because we are considering Worst Case.  (Here we have Certainity)
                         eggDrop1(e-1,check-1),                         // Break

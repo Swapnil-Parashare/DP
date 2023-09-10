@@ -71,7 +71,7 @@ Floors         Best Case     Worst Case
  1] If you observe the table closely, you will see that Floor 9 to Floor 14 give the OUTPUT : 14.
  2] It simply means that if you make your first attempt from any of the floor between 9 to 14, 
     you will require only 14 attempts to determine critical floor.
- 3] Target Floor (k) : The floor which gives minimum output, is were you should make your first attempt.
+ 3] Target Floor (k) : The floor which gives minimum output, this is were you should make your first attempt.
 
                                                         Question 2
     
@@ -183,21 +183,21 @@ Result :-
 
           
 
-Attempt	 Floor No   Result                                          .                   
-1	         9        Survive                                         .
-2	         22       Survive                                         .
-3	         34       Survive                                         .
-4	         45       Survive                                         .                                        
-5	         55       Survive                                         .
-6	         64       Survive                                         .
-7	         72       Survive                                         .
-8	         79       Survive                                         .
-9	         85       Survive                                         .
-10	         90       Survive                                         .
-11	         94       Survive                                         .
-12	         97       Survive                                         .
-13	         99       Survive                                         .
-14	         100      Survive                                         .
+Attempt	 Floor No   Result (Worst Case)                                                             
+1	         9        Survive                                         
+2	         22       Survive                                         
+3	         34       Survive                                         
+4	         45       Survive                                                                                 
+5	         55       Survive                                         
+6	         64       Survive                                         
+7	         72       Survive                                         
+8	         79       Survive                                         
+9	         85       Survive                                         
+10	         90       Survive                                         
+11	         94       Survive                                         
+12	         97       Survive                                         
+13	         99       Survive                                         
+14	         100      Survive                                         
 
 
 Note 1 :       1] At each egg drop we are choosing "Survive" as a result.
@@ -205,8 +205,8 @@ Note 1 :       1] At each egg drop we are choosing "Survive" as a result.
                                                   OR
                                           "Survive" & "Break" both has same output.
                3] Thus at any egg drop, if you choose to go for "Break", you would end up using
-                  either same number of attempt or less number of attempts.
-               4] But this is 100% sure that you won't need even a single attempt more than 14.
+                  either same number of attempts or less number of attempts than 14.
+               4] But I am 100% sure that you won't need even a single attempt more than 14.
 
 
 Note 2 :-      Coincidently, here for most of the cases
@@ -219,18 +219,24 @@ Note 2 :-      Coincidently, here for most of the cases
 
                                                                                                  
                                                                              
-                                            solve(f,e)                                                                                         
-                                                |                                                                                              
-                                                | Target Floor (k)  ------------->   1. This 'k' is w.r.t current main problem.                                                      .
-                                                |                                    2. It is means 'k' is w.r.t  'f'  of current problem only.                                             .
-                                               / \                                   3. 'k' is not w.r.t 100 (i.e Total No. of Floors)                                             .
-                                              /   \                                                                                            
-                                       Break /     \ Survive                                                                                   
-                                            /       \                                                                                          
-                                           /         \                                                                                         
-                            solve(k-1,e-1)            solve(f-k,e)                                                                                                                           .                      
+                solve(f,e)                                                                                         
+                    |                                                                                              
+                    | Target Floor (k)  ------------->   1. This 'k' is w.r.t current main problem.                                                      .
+                    |                                    2. It is means 'k' is w.r.t  'f'  of current problem only.                                             .
+                   / \                                   3. 'k' is not w.r.t 100 (i.e Total No. of Floors)                                             .
+                  /   \                                                                                            
+           Break /     \ Survive                                                                                   
+                /       \                                                                                          
+               /         \                                                                                         
+solve(k-1,e-1)            solve(f-k,e)                                                                                                                           .                      
                          
-                                                                                                 
+
+1] Floors = 100, Eggs = 2   Output = 14.
+2] This means 14 attempts are enough to determine critical floor even in worst condition.
+3] You should use your attempts wisely, otherwise you would end up needing more than 14 attempts.
+4] What is the wise way to use your attempts?
+   1) For each problem  solve(f,e) only choose to make attempt from the floor which is giving minimum output.
+   2) In simple words, Make attempt from "Target Floor"(k) only.                  
                                                                                                  
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
  

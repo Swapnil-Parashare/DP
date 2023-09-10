@@ -1,4 +1,5 @@
 #include<iostream>
+#include<cmath>
 
 using namespace std;
 
@@ -6,6 +7,13 @@ class Solution
 {
     public:
 
+    // This calculates log to the base 2, in constant time. (Bit Manipulation)
+    int log(long long x)                                                               // 1. This function breaks on my VS Code, but works perfectly on leetcode.
+    {                                                                                  // 2. For f = 100, e = 100     VS Code Output = 39.  Expected Output = 7.
+        return 64 - __builtin_clzl(x) - 1;                                             // 3. When same input is given on Leetcode Custom Testcase,  Output = 7.
+    }                                                                                  // 4. This is because maybe it is complier specific. (GCC)
+                                                                                       // 5. Instead of using this function, simply use " log2() " inbuilt function. Correct output is achieved.
+    
     int solve(int e, int f)
     {
         // Base Condition
@@ -13,6 +21,11 @@ class Solution
         {
             return f;
         }
+
+        // If Sufficient amount of eggs are present.
+        int sufficient = log2(f) + 1;
+        if(e >= sufficient) return sufficient;
+
 
         int temp_ans;
         int final_ans = INT_MAX;

@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<cmath>
 
 using namespace std;
 
@@ -9,6 +10,12 @@ class Solution
     
     vector<vector<int>> dp;
 
+    // This calculates log to the base 2, in constant time. (Bit Manipulation)
+    int log(long long x) 
+    {
+        return 64 - __builtin_clzl(x) - 1;
+    }
+    
     int solve(int e, int f)
     {
         // Base Condition
@@ -19,6 +26,12 @@ class Solution
 
         // Memoization
         if(dp[e][f] != -1) return dp[e][f];
+        
+
+        // If Sufficient amount of eggs are present.
+        int sufficient = log2(f) + 1;
+        if(e >= sufficient) return sufficient;
+
 
         int temp_ans;
         int final_ans = INT_MAX;
@@ -64,3 +77,12 @@ int main()
 
     cout << "Answer : " << S.eggDrops(Eggs,Floors) << endl;
 }
+
+/*
+1. Better than Tabulation.
+2. We can add the sufficient egg condition, inside nested for loops of tabulation.
+3. But I am keeping it as it is. 
+4. It reduces the readablity of the code.
+
+Here it won't affect that much. As we can simply consider it as another base condition.
+*/

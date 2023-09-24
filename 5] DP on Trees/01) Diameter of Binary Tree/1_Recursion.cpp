@@ -7,34 +7,33 @@ class Solution
 {
     public :
 
-    int height(Node* root)
+    int height(struct Node* node)
     {
+        
+        // Base Condition
+        if(node == NULL ) return 0;
+        
+        int left = height(node->left);
+        int right = height(node->right);
+        
+        return 1 + max(left,right);
+        
+    }
+  
+    
+    int diameter(Node* root) 
+    {
+        
         // Base Condition
         if(root == NULL) return 0;
-
-        int left = height(root->left);
-        int right = height (root->right);
-
-        return 1 + max(left,right);
-    }
-
-
-    int temp_ans;
-    int final_ans = INT_MIN;
-
-    int diameter(Node* root)
-    {
-       if(root == NULL) return 0; 
-
-       int left_Height = height(root->left);
-       int right_Height = height(root->right);
-
-       int left_Diameter = diameter(root->left);
-       int right_Diameter = diameter(root->right);
-
-       int temp_ans = 1 + left_Height + right_Height;                           // Diameter passing through current root.
-
-       return max(temp_ans, max(left_Diameter,right_Diameter) );
+        
+        int left = diameter(root->left);
+        int right = diameter(root->right);
+        int current = 1 + height(root->left) + height(root->right);
+        
+        return max(current,max(left,right));
+        
+        
     }
 };
 

@@ -33,9 +33,9 @@ class Solution
                 return -1;
             }
 
-            Solution S1;
-            S1.heightSum(root);
-            return S1.final_ans;
+            
+            heightSum(root);
+            return final_ans;
         }
         
     }; 
